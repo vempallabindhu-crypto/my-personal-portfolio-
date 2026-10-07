@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Personal Portfolio</title>
+
+    <style>
+        /* =========================
+           GENERAL STYLES
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* =========================
+           NAVIGATION BAR
+        ========================== */
+
+        header {
+            background-color: #1e293b;
+            color: white;
+            padding: 15px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            font-size: 16px;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        /* =========================
+           HOME SECTION
+        ========================== */
+
+        .home {
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #e0f2fe, #f8fafc);
+        }
+
+        .home-content h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+
+        .home-content h2 {
+            color: #0284c7;
+            margin-bottom: 15px;
+        }
+
+        .home-content p {
+            max-width: 650px;
+            margin: auto;
+            font-size: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background-color: #0284c7;
+            color: white;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #0369a1;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           COMMON SECTION
+        ========================== */
+
+        section {
+            padding: 70px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 35px;
+            color: #1e293b;
+        }
+
+        /* =========================
+           ABOUT SECTION
+        ========================== */
+
+        .about-content {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        /* =========================
+           SKILLS SECTION
+        ========================== */
+
+        .skills-container {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .skill {
+            margin-bottom: 20px;
+        }
+
+        .skill-name {
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .skill-bar {
+            height: 12px;
+            background-color: #dbeafe;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background-color: #0284c7;
+            border-radius: 10px;
+        }
+
+        .html {
+            width: 90%;
+        }
+
+        .css {
+            width: 85%;
+        }
+
+        .javascript {
+            width: 75%;
+        }
+
+        .python {
+            width: 80%;
+        }
+
+        /* =========================
+           PROJECTS SECTION
+        ========================== */
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .project-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .project-card h3 {
+            color: #0284c7;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            margin-bottom: 15px;
+        }
+
+        .project-btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #1e293b;
+            color: white;
+            border-radius: 5px;
+        }
+
+        /* =========================
+           CONTACT SECTION
+        ========================== */
+
+        .contact-form {
+            max-width: 650px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        .form-group textarea {
+            height: 130px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background-color: #0284c7;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #0369a1;
+        }
+
+        #message {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background-color: #1e293b;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================== */
+
+        @media (max-width: 768px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .home-content h1 {
+                font-size: 36px;
+            }
+
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 50px 5%;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .nav-links {
+                font-size: 14px;
+                gap: 10px;
+            }
+
+            .home-content h1 {
+                font-size: 30px;
+            }
+
+            .home-content h2 {
+                font-size: 20px;
+            }
+
+            .section-title {
+                font-size: 27px;
+            }
+
+            .contact-form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header>
+        <nav>
+            <div class="logo">My Portfolio</div>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- =========================
+         HOME
+    ========================== -->
+
+    <section class="home" id="home">
+
+        <div class="home-content">
+
+            <h1>Hello, I'm Your Name</h1>
+
+            <h2>Web Developer</h2>
+
+            <p>
+                Welcome to my personal portfolio website.
+                I am interested in web development and enjoy
+                creating simple, responsive and user-friendly
+                websites using modern technologies.
+            </p>
+
+            <a href="#projects" class="btn">View My Projects</a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT ME
+    ========================== -->
+
+    <section id="about">
+
+        <h2 class="section-title">About Me</h2>
+
+        <div class="about-content">
+
+            <p>
+                I am a passionate student interested in technology
+                and web development. I enjoy learning new programming
+                concepts and developing useful applications.
+                I have knowledge of HTML, CSS, JavaScript and Python.
+                My goal is to improve my technical skills and become
+                a successful software developer.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SKILLS
+    ========================== -->
+
+    <section id="skills">
+
+        <h2 class="section-title">My Skills</h2>
+
+        <div class="skills-container">
+
+            <div class="skill">
+                <div class="skill-name">HTML</div>
+
+                <div class="skill-bar">
+                    <div class="skill-progress html"></div>
+                </div>
+            </div>
+
+
+            <div class="skill">
+                <div class="skill-name">CSS</div>
+
+                <div class="skill-bar">
+                    <div class="skill-progress css"></div>
+                </div>
+            </div>
+
+
+            <div class="skill">
+                <div class="skill-name">JavaScript</div>
+
+                <div class="skill-bar">
+                    <div class="skill-progress javascript"></div>
+                </div>
+            </div>
+
+
+            <div class="skill">
+                <div class="skill-name">Python</div>
+
+                <div class="skill-bar">
+                    <div class="skill-progress python"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROJECTS
+    ========================== -->
+
+    <section id="projects">
+
+        <h2 class="section-title">My Projects</h2>
+
+        <div class="projects-container">
+
+            <div class="project-card">
+
+                <h3>Portfolio Website</h3>
+
+                <p>
+                    A responsive personal portfolio website created
+                    using HTML, CSS and JavaScript to display my
+                    profile, skills and projects.
+                </p>
+
+                <a href="#" class="project-btn">View Project</a>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <h3>Student Management System</h3>
+
+                <p>
+                    A simple application designed to manage student
+                    information such as student names, marks and
+                    other academic details.
+                </p>
+
+                <a href="#" class="project-btn">View Project</a>
+
+            </div>
+
+
+            <div class="project-card">
+
+                <h3>To-Do List</h3>
+
+                <p>
+                    A simple JavaScript-based to-do list application
+                    that allows users to add and manage their daily
+                    tasks.
+                </p>
+
+                <a href="#" class="project-btn">View Project</a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT FORM
+    ========================== -->
+
+    <section id="contact">
+
+        <h2 class="section-title">Contact Me</h2>
+
+        <form class="contact-form" id="contactForm">
+
+            <div class="form-group">
+
+                <label for="name">Name</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="email">Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="messageText">Message</label>
+
+                <textarea
+                    id="messageText"
+                    placeholder="Enter your message"
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <button type="submit" class="submit-btn">
+                Send Message
+            </button>
+
+            <div id="message"></div>
+
+        </form>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Your Name | Personal Portfolio
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        // Contact Form Validation
+
+        document
+            .getElementById("contactForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                const name =
+                    document.getElementById("name").value.trim();
+
+                const email =
+                    document.getElementById("email").value.trim();
+
+                const messageText =
+                    document.getElementById("messageText").value.trim();
+
+                const message =
+                    document.getElementById("message");
+
+
+                if (name === "" ||
+                    email === "" ||
+                    messageText === "") {
+
+                    message.textContent =
+                        "Please fill in all the fields.";
+
+                    return;
+                }
+
+
+                message.textContent =
+                    "Thank you! Your message has been submitted.";
+
+                // Clear form after submission
+                document.getElementById("contactForm").reset();
+
+            });
+
+
+        // Navigation click effect
+
+        const navLinks =
+            document.querySelectorAll(".nav-links a");
+
+        navLinks.forEach(function(link) {
+
+            link.addEventListener("click", function() {
+
+                navLinks.forEach(function(item) {
+                    item.style.color = "white";
+                });
+
+                this.style.color = "#38bdf8";
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
